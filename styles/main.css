@@ -73,3 +73,13 @@ img{
 		height:100%;
 	}
 }
+
+
+@media screen and (max-width: 400px) {
+  /* For desktop: */
+	/* color:yellow; */
+	#main-title{
+		width: 50%;
+		margin-top:5px;
+	}
+}
