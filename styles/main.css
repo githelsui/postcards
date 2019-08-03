@@ -69,12 +69,11 @@ We have added the border property to demonstrate that
 the flip itself goes out of the box on hover (remove perspective
 if you don't want the 3D effect */
 .flip-card {
-	padding:20px;
+	margin:20px;
 	display: block;
   background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
+	width:300px;
+	height: 500px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -109,8 +108,8 @@ if you don't want the 3D effect */
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
-  color: white;
+  background-color: white;
+  color: black;
   transform: rotateY(180deg);
 }
 
