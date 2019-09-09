@@ -121,17 +121,19 @@ of the box on hover (remove perspective if you don't want the 3D effect */
 	font-size: 25px;
 }
 .caption p{
-	font-size: 20px;
+	font-size: 18px;
 	padding-left: 10px;
 	padding-right: 10px;
 	justify-content: center;
-	width:  300px;
+	text-align: center;
+	width:  250px;
 	word-wrap: break-word;
 	font-style: italic;
 }
 
-.date{
+.description{
 	font-size: 15px;
+	padding: 10px;
 }
 
 /* Style the front side (fallback if image is missing) */
