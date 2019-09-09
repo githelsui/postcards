@@ -15,7 +15,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 # the handler section
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        map_template = JINJA_ENVIRONMENT.get_template('templates/main.html')
+        explore_template = JINJA_ENVIRONMENT.get_template('templates/main.html')
         my_user = users.get_current_user()
         # if my_user == None:
         #     self.redirect('/login')
@@ -32,7 +32,7 @@ class MainPage(webapp2.RequestHandler):
         #         'othertrees':othertrees,
         #         'logouturl': logout_url
         #         }
-        self.response.write(map_template.render())
+        self.response.write(explore_template.render())
 
     def post(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
@@ -64,9 +64,9 @@ class TreeHandler(webapp2.RequestHandler):
         tree = Tree(lat=m_lat, long=m_lng, number=number, user_id=my_userid, email=m_email, date=date)
         tree.put()
 
-class CommunityHandler(webapp2.RequestHandler):
+class ProfilePage(webapp2.RequestHandler):
     def get(self):
-        map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
+        profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
         my_user = users.get_current_user()
         if my_user == None:
             self.redirect('/login')
@@ -91,7 +91,7 @@ class CommunityHandler(webapp2.RequestHandler):
                 'logouturl': logout_url,
                 'planters': sorted(trees_per_user.items(), key=lambda x: x[1], reverse=True)
                 }
-            self.response.write(map_template.render(dict_for_template))
+            self.response.write(profile_template.render(dict_for_template))
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
@@ -114,11 +114,20 @@ class AboutHandler(webapp2.RequestHandler):
                 }
             self.response.write(map_template.render(dict_for_template))
 
+class LoginPage(webapp2.RequestHandler):
+    def get(self):
+        login_template = JINJA_ENVIRONMENT.get_template('templates/login.html')
+        my_user = users.get_current_user()
+        dict_for_template = {
+            'login_url': users.create_login_url('/'),
+            'header': "Create An Account"
+        }
+        self.response.write( login_template.render(dict_for_template))
+
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/profile', ProfilePage),
     ('/login', LoginPage),
-    ('/tree', TreeHandler),
-    ('/community', CommunityHandler),
     ('/about', AboutHandler)
 ], debug=True)

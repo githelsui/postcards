@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles/main.css"/>
     <link rel="stylesheet" href="styles/sidebar.css"/>
+    <link rel="stylesheet" href="styles/profile.css"/>
     <link rel="shortcut icon" href="https://img.icons8.com/ios/64/000000/combi-ticket.png" type="image/x-icon"/>
 </head>
 <body>
@@ -24,8 +25,15 @@
     </div>
   </div>
 
+
   <!-- content -->
-<div id="content">
+<div class="center">
+  <div id="login-header">Create an Account.<br>
+    <div class="italic">
+    And start sharing postcards.
+    </div>
+  </div><br>
+  <button type="submit" class="account-button" onclick="window.location.href = '{{loginurl}}'">Login</button>
 </div>
 
     <script src="scripts/main.js"></script>
